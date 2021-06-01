@@ -3,11 +3,13 @@ import {Switch, Route} from "react-router-dom";
 import Signup from "./Signup";
 import Login from "./Login";
 import Header from "./Header";
+import MovieHome from "./MovieHome";
 
 
 function App() {
   return (
     <div>
+      <Header/>
       <Switch>
         <Route exact path="/">
           <Signup/>
@@ -16,7 +18,7 @@ function App() {
           <Login/>
         </Route>
         <Route exact path="/home">
-          <Header />
+          <MovieHome />
         </Route>
       </Switch>
       
