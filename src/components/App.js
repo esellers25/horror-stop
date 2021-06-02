@@ -12,12 +12,29 @@ import MovieMainPage from "./MovieMainPage";
 function App() {
 
   const [categories, setCategories] = useState([])
+  const [movies, setMovies] = useState([])
+  const [selectedMovie, setSelectedMovie] = useState({})
+
 
   useEffect(() => {
     fetch("http://localhost:3000/categories")
     .then(r => r.json())
-    .then(categoryData => setCategories(categoryData))
+    .then(categoryData => {
+      setCategories(categoryData)
+      let movieGroupings = categoryData.map(( category) => category.movies)
+      console.log(movieGroupings)
+      let allMovies = movieGroupings.flat()
+      setMovies(allMovies)}
+      )
+      
   }, [])
+
+  function setClickedMovie(id){
+  const movieOnPage = movies.find((movie) => movie.id == id)
+  setSelectedMovie(movieOnPage)
+  }
+
+  console.log(movies)
 
   return (
     <div>
@@ -33,10 +50,11 @@ function App() {
           <MovieHome categories={categories}/>
         </Route>
         <Route exact path="/categories/:id">
-          <MovieList categories={categories}/>
+          {categories.length === 0? null : <MovieList onClickMovie={setClickedMovie}categories={categories}/>}
         </Route>
         <Route exact path="/movies/:id">
-          <MovieMainPage/>
+        {selectedMovie.length === 0? null : <MovieMainPage selectedMovie = {selectedMovie}/>}
+
         </Route>
       </Switch>
       

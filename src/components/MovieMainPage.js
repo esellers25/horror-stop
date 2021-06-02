@@ -1,11 +1,18 @@
 import {useParams} from "react-router-dom"
+import {useState} from "react"
 
-function MovieMainPage(){
-    const {id} = useParams();
-    console.log(id)
+function MovieMainPage({selectedMovie}){
+
+console.log(selectedMovie)
     return(
         <div>
-            <h1>MOVIE LANDING PAGE</h1>
+            <h1>{selectedMovie.title}</h1>
+            <h2>Release date: {selectedMovie.year}</h2>
+            <img src={selectedMovie.poster_url}></img>
+            <p>Description: {selectedMovie.summary}</p>
+            <p>Where to watch: {selectedMovie.watch_providers}</p>
+            <p>{selectedMovie.runtime}</p>
+
         </div>
     )
 }

@@ -2,7 +2,7 @@ import MovieCard from "./MovieCard";
 import {useParams} from "react-router-dom"
 import {useState} from "react"; 
 
-function MovieList({categories}){
+function MovieList({categories, onClickMovie}){
     const {id} = useParams();
     console.log(categories)
     
@@ -13,6 +13,7 @@ function MovieList({categories}){
     <MovieCard 
     key={movie.id} 
     movie={movie}
+    onClickMovie={onClickMovie}
     />)
 
     return(
