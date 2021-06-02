@@ -1,17 +1,24 @@
 import MovieCard from "./MovieCard";
 import {useParams} from "react-router-dom"
+import {useState} from "react"; 
 
 function MovieList({categories}){
     const {id} = useParams();
     console.log(categories)
-    let selectedCategory = categories.find((category) => category.id === id)
-    // let movieList = selectedCategory.movies 
-    console.log(selectedCategory)
+    
+    let selectedCategory = categories.find(category => category.id == id)
+    let selectedMovies = selectedCategory.movies 
+    console.log(selectedMovies)
+    let movieCards = selectedMovies.map((movie) => 
+    <MovieCard 
+    key={movie.id} 
+    movie={movie}
+    />)
 
     return(
         <div>
             <h1>List PAGE</h1>
-            <MovieCard/>
+            {movieCards}
         </div>
     )
 }

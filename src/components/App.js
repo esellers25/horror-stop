@@ -6,6 +6,7 @@ import Header from "./Header";
 import MovieHome from "./MovieHome";
 import { useEffect, useState } from "react";
 import MovieList from "./MovieList";
+import MovieMainPage from "./MovieMainPage";
 
 
 function App() {
@@ -33,6 +34,9 @@ function App() {
         </Route>
         <Route exact path="/categories/:id">
           <MovieList categories={categories}/>
+        </Route>
+        <Route exact path="/movies/:id">
+          <MovieMainPage/>
         </Route>
       </Switch>
       
