@@ -15,7 +15,7 @@ function MovieList({categories}){
 
     return(
         <div>
-            <h1>List PAGE</h1>
+            <h3>{selectedCategory.name} Movies</h3>
             {movieCards}
         </div>
     )

@@ -10,9 +10,9 @@ function MovieCard({movie}){
     }
 
     return(
-        <div>
-            <h1>{title}</h1>
-            <img onClick={handleClick} src={poster_url} alt={title}/>  
+        <div className="card" onClick={handleClick}>
+            <h4 className="movie-card">{title}</h4>
+            <img className="movie-pic" src={poster_url} alt={title}/>  
         </div>
     )
 }

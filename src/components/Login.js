@@ -28,7 +28,7 @@ function Login({handleLogin}) {
     }
     
     return (
-        <div>
+        <div className="login-form">
             <h2>Login</h2>
             <form onSubmit={(e) => logIn(e)}>
                 <label>UserName</label>

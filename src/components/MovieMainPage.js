@@ -1,9 +1,10 @@
-import {useParams} from "react-router-dom";
+import {useParams,  useHistory} from "react-router-dom";
 import {useState} from "react";
 import { Card } from 'semantic-ui-react';
 
 function MovieMainPage({movies, user}){
     const {id} = useParams();
+    const history = useHistory();
     const selectedMovie = movies.find((movie) => movie.id == id)
     const [mainMovie, setMainMovie] = useState(selectedMovie)
     const [rating, setRating] = useState("")
@@ -11,15 +12,17 @@ function MovieMainPage({movies, user}){
     const [comment, setComment] = useState("")
     const {watch_providers, reviews} = mainMovie
     const [reviewArr, setReviewArr] = useState(reviews)
-    
 
     const providersList = watch_providers.replace(/['"]+/g, '')
     const providers = providersList.slice(1, -1)
-    const list = providers.split(",")
+    const firstList = providers.split(",")
+    const list = firstList.join()
+    
 
     const reviewList = reviewArr.map((review) => 
         <>
-            <Card key={review.id}>
+            <Card className="review-cards" key={review.id}>
+            {/* <h5>{user.username}</h5> */}
             <p>Rating: {review.rating}</p>
             <p>Spook Factor: {review.spook_factor}</p>
             <p>{review.comment}</p>
@@ -27,6 +30,15 @@ function MovieMainPage({movies, user}){
             </Card>
         </>
     )
+
+    const allRatings = reviewArr.map((review) => review.rating)
+    const currentAverage = allRatings.length > 0 ? allRatings.reduce((a,b) => a + b, 0)/allRatings.length : 0
+    const average = parseFloat(currentAverage).toFixed(1)
+   
+
+    function handleBackClick(){
+        history.goBack()
+    }
 
     function handleDelete(id){
         fetch(`http://localhost:3000/reviews/${id}`, {
@@ -67,18 +79,23 @@ function MovieMainPage({movies, user}){
     }
 
 
-const providersAll = list.map((provider) => <p key={provider}>{provider}</p>)
-
     return(
         <div>
             <div>
-            <h1>{mainMovie.title}</h1>
-            <h2>Release date: {mainMovie.year}</h2>
-            <img src={mainMovie.poster_url} alt={mainMovie.title}></img>
-            <h5>Runtime: {mainMovie.runtime}</h5>
-            <p>Description: {mainMovie.summary}</p>
-            <h5>Where to watch:</h5>
-            {watch_providers.length > 0 ? providersAll : "Sorry, not available to stream!"}
+            <button class="ui small button" onClick={handleBackClick}>Back</button><br/>
+            <h2>{mainMovie.title}</h2>
+            <h3>Release date: {mainMovie.year}</h3>
+            <div className="main-content">
+                <img className="main-movie-img"src={mainMovie.poster_url} alt={mainMovie.title}></img><br/>
+                <section className="section">
+                    <h4>Runtime: {mainMovie.runtime}</h4>
+                    <h4>Summary</h4>
+                        <p>{mainMovie.summary}</p>
+                    <h4>Where to watch:</h4>
+                    {watch_providers.length > 0 ? <p>{list}</p> : "Sorry, not available to stream!"}
+                    <h4>Average User Review: {average}</h4>
+                </section>
+            </div>
             <h3>User Reviews</h3>
             {reviewList}
             </div>

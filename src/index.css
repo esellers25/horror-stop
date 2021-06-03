@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color:white;
 }
 
 code {
@@ -24,11 +25,119 @@ code {
   margin-bottom: 1em;
 }
 
-.ui.card, .ui.cards>.card {
+/* .ui.card, .ui.cards>.card {
   width: 400px;
-}
+} */
 
 .ui.card>.image>img, .ui.cards>.card>.image>img {
   height: 290px;
+  width: auto;
   align-items: center; 
+  margin: auto;
+  background-position: center;
+  background-size: contain;
+}
+
+
+h1.homePage {
+  font-family: 'Creepster', cursive;
+  font-size: 6em;
+  pointer-events: none;
+}
+
+
+.card {
+  text-align: center;
+  border: grey solid 1px;
+  padding: .6rem;
+  width: 16rem;
+  height: 26rem;
+  display: inline-grid;
+  margin: 1rem 1.5rem;
+  background-color: rgb(99, 92, 95);
+}
+
+.card:hover {
+  cursor: pointer;
+}
+
+.movie-pic {
+  justify-self: center;
+  height: auto;
+  width: 100%;
+}
+
+.section {
+  padding: 2em;
+  margin: 5px 5px 5px 5px;
+  display: flex;
+  width: 400px;
+  flex-direction: column;
+  align-content: center;
+  background-color: gray;
+  border-radius: 5%;
+}
+
+.section h4 {
+  margin-bottom: .5rem;
+  margin-top: 1rem;
+} 
+
+.main-movie-img{
+  
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 50%;
+  height: auto;
+}
+
+h4.movie-card {
+  font-size: 1.5em;
+  margin-bottom: .6rem;
+}
+
+.navbar {
+  background-color: #270471;
+  margin-top: 40px;
+  line-height: 250%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  border-radius: 4%;
+}
+
+.navbar a {
+  color: white;
+  padding-left: 15px;
+}
+
+.login-form {
+  margin-top: 2rem;
+  background-color: rgb(64 57 60);
+  height: 160px;
+  vertical-align: middle;
+  padding: 1rem;
+}
+
+.login-form label {
+  color: white;
+  margin: 10px 5px 10px 5px
+}
+
+.review-cards p {
+  color: black;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 1000px;
+}
+
+.header {
+  background-image: url("https://ak.picdn.net/shutterstock/videos/1041541525/thumb/1.jpg");
+
 }
