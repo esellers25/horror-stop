@@ -3,7 +3,6 @@ import { Card } from 'semantic-ui-react';
 
 function MovieHome({categories}){
     
-    
     let categoryList = categories.map((category) => <CategoryCard key={category.id} category={category}/>)
     
     return(

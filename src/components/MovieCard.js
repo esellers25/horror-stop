@@ -1,27 +1,18 @@
-import {Link, useHistory} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 
-
-
-function MovieCard({movie, onClickMovie}){
+function MovieCard({movie}){
     const {id, title, poster_url} = movie 
-
     const history = useHistory()
-    
-    console.log(movie)
+  
 
     function handleClick(){
-     onClickMovie(id)
-    history.push(`/movies/${id}`)
-
+        history.push(`/movies/${id}`)
     }
 
     return(
         <div>
-            
             <h1>{title}</h1>
-           
-            <img onClick={handleClick} src={poster_url} alt={title}/>
-            
+            <img onClick={handleClick} src={poster_url} alt={title}/>  
         </div>
     )
 }

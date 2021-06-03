@@ -1,9 +1,9 @@
 import {Link} from "react-router-dom";
 import { Card } from 'semantic-ui-react';
-import MovieList from "./MovieList";
+
 
 function CategoryCard({category}){
-    const {name, image, id, movies} = category
+    const {name, image, id} = category
     
     return (
         <div>
