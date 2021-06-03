@@ -50,10 +50,10 @@ h1.homePage {
   text-align: center;
   border: grey solid 1px;
   padding: .6rem;
-  width: 16rem;
-  height: 26rem;
+  width: 17rem;
+  height: 30rem;
   display: inline-grid;
-  margin: 1rem 1.5rem;
+  margin: 1rem 1rem;
   background-color: rgb(99, 92, 95);
 }
 
@@ -99,12 +99,14 @@ h4.movie-card {
 .navbar {
   background-color: #270471;
   margin-top: 40px;
+  margin-bottom: 30px;
   line-height: 250%;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
   border-radius: 4%;
+  padding: 0.3rem;
 }
 
 .navbar a {
@@ -125,8 +127,28 @@ h4.movie-card {
   margin: 10px 5px 10px 5px
 }
 
+.review-container {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+}
+
 .review-cards p {
+  
   color: black;
+  
+}
+
+.review-cards {
+  background-color: whitesmoke;
+  width: 265px;
+  margin-left: 5px;
+  margin-right: 5px;
+  border-style: solid 20px red;
+  border-color: red;
+  border-radius: 5%;
+  padding: 8px 8px 8px 8px;
+  align-content: center;
 }
 
 .main-content {
@@ -135,9 +157,84 @@ h4.movie-card {
   flex-wrap: wrap;
   justify-content: space-evenly;
   width: 1000px;
+  margin-bottom: 35px;
 }
 
 .header {
   background-image: url("https://ak.picdn.net/shutterstock/videos/1041541525/thumb/1.jpg");
 
+}
+
+.review-form {
+  background-color: #270471;
+  height: 250px;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1rem;
+}
+
+.review-form label {
+  color: white;
+}
+
+.review-form button {
+  margin-top: 10px; 
+}
+.review-data-field {
+  display: inline-block;
+  float: left;
+}
+
+.review select{
+  height: 30px;
+}
+
+.review-form input {
+  height: 30px;
+}
+
+.bullshit {
+  height: 100px;
+}
+
+.add-review-container h3{
+  text-align: center;
+  margin-top: 15px;
+}
+
+.display-container {
+
+}
+
+.category-card {
+  text-align: center;
+  border: grey solid 1px;
+  padding-top: .6rem;
+  padding-right: .3rem;
+  padding-left: .3rem;
+  width: 22rem;
+  height: 28rem;
+  display: inline-grid;
+  margin: .5rem 1rem;
+  background-color: rgb(192, 190, 191);
+  border-radius: 7%;
+}
+
+.category-card:hover {
+  cursor: pointer;
+  background-color: red;
+}
+
+.category-pic {
+  justify-self: center;
+  float: left;
+  width:  250px;
+  height: 250px;
+  object-fit: cover;
+  margin-top: 6px;
 }

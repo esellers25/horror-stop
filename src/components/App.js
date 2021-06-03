@@ -37,7 +37,7 @@ function App() {
   const GlobalStyle= createGlobalStyle`
     body {
       background-color: #101010;
-      margin: 0 10% 0 10%;
+      margin: 0 10% 5% 10%;
     }
 
     h1 {
@@ -46,6 +46,7 @@ function App() {
       cursor: pointer;
       color: rgb(185 2 2 / 87%);
       text-align: center;
+      text-shadow: 2px 2px #ff0000;
     }
 
     h1:hover {

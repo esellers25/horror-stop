@@ -26,6 +26,10 @@ function Login({handleLogin}) {
             history.push("/home")
         })
     }
+
+    function handleSignInClick(){
+        history.push("/")
+    }
     
     return (
         <div className="login-form">
@@ -37,6 +41,8 @@ function Login({handleLogin}) {
                 <input name="password" type="password" value={password} onChange={e => setPassword(e.target.value)}/>
                 <input type="submit"/>
             </form>
+            <h4>Need an account?</h4>
+            <button onClick={handleSignInClick}>Sign up for an account</button>
         </div>
     )
 }

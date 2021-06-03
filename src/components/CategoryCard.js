@@ -8,12 +8,10 @@ function CategoryCard({category}){
     return (
         <div>
             <Link to={`/categories/${id}`}>
-                <Card>
-                    <Image src={image} />
-                    <Card.Content>
-                        <Card.Header>{name}</Card.Header>
-                    </Card.Content>
-                </Card> 
+                <div className="category-card">
+                    <img className="category-pic" src={image} />
+                    <h4 className="movie-card">{name}</h4>
+                </div> 
             </Link>
         </div>
     );
