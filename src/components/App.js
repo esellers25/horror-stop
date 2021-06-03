@@ -1,5 +1,5 @@
 import {Switch, Route} from "react-router-dom";
-// import '.src/App.css';
+import '../App.css';
 import Signup from "./Signup";
 import Login from "./Login";
 import Header from "./Header";

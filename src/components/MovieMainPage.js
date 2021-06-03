@@ -10,21 +10,35 @@ function MovieMainPage({movies, user}){
     const [spookFactor, setSpookFactor] = useState(1)
     const [comment, setComment] = useState("")
     const {watch_providers, reviews} = mainMovie
-    console.log(reviews)
+    const [reviewArr, setReviewArr] = useState(reviews)
+    
 
     const providersList = watch_providers.replace(/['"]+/g, '')
     const providers = providersList.slice(1, -1)
     const list = providers.split(",")
 
-    const reviewList = reviews.map((review) => 
+    const reviewList = reviewArr.map((review) => 
         <>
             <Card>
             <p>Rating: {review.rating}</p>
             <p>Spook Factor: {review.spook_factor}</p>
             <p>{review.comment}</p>
+            {user && review.user_id === user.id ? <button onClick={() => handleDelete(review.id)}>x</button> : null}
             </Card>
         </>
     )
+
+    function handleDelete(id){
+        fetch(`http://localhost:3000/reviews/${id}`, {
+            method: "DELETE"
+        })
+        .then(r => r.json())
+        .then(deletedMessage =>{
+            const updatedReviews = reviewArr.filter((review) => review.id !== id)
+            setReviewArr(updatedReviews)
+            console.log(reviewArr)
+        })
+    }
 
     function handleSubmit(e){
         e.preventDefault()
@@ -43,10 +57,11 @@ function MovieMainPage({movies, user}){
         })
         .then(r => r.json())
         .then(newReview => {
-            console.log(newReview)
+            const updatedReviews = [...reviewArr, newReview]
+            setReviewArr(updatedReviews)
             setComment("")
             setRating("")
-            setSpookFactor(null)
+            setSpookFactor(1)
         })
     }
 
