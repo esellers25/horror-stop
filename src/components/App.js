@@ -13,6 +13,7 @@ function App() {
 
   const [categories, setCategories] = useState([])
   const [movies, setMovies] = useState([])
+  const [user, setUser] = useState(null)
   // const [selectedMovie, setSelectedMovie] = useState({})
 
 
@@ -28,6 +29,11 @@ function App() {
       
   }, [])
 
+  function onLogin(userInfo){
+    setUser(userInfo)
+  }
+  console.log(user)
+
   // function setClickedMovie(id){
   //   const movieOnPage = movies.find((movie) => movie.id == id)
   //   setSelectedMovie(movieOnPage)
@@ -36,13 +42,13 @@ function App() {
 
   return (
     <div>
-      <Header/>
+      <Header user={user}/>
       <Switch>
         <Route exact path="/">
           <Signup/>
         </Route>
         <Route exact path="/login">
-          <Login/>
+          <Login handleLogin={onLogin}/>
         </Route>
         <Route exact path="/home">
           <MovieHome categories={categories}/>
@@ -51,7 +57,7 @@ function App() {
           {categories.length === 0 ? null : <MovieList categories={categories}/>}
         </Route>
         <Route exact path="/movies/:id">
-          {movies.length ===0 ? null: <MovieMainPage movies = {movies}/>}
+          {movies.length ===0 ? null: <MovieMainPage movies = {movies} user={user}/>}
         </Route>
       </Switch>
       

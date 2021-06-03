@@ -1,17 +1,26 @@
-import {useHistory} from "react-router-dom";
+import {useHistory, NavLink} from "react-router-dom";
 
-function Header() {
+function Header({user}) {
     const history = useHistory()
     
     function logOut(){
         localStorage.clear()
         history.push("/login")
     }
+
+    function logIn(){
+        history.push("/login")
+    }
     
     return (
         <div>
             <h1>SPOOKY SITE</h1>
-            <button onClick={() => logOut()}>LogOut</button>
+            <div>
+                <nav>
+                    <NavLink to="/home">Home</NavLink>
+                    {user ? <button onClick={() => logOut()}>Logout</button> : <button onClick={() => logIn()}>Login</button>}
+                </nav>
+            </div>
         </div>
     )
 }

@@ -1,6 +1,6 @@
 import {useHistory} from "react-router-dom";
 
-function Login() {
+function Login({handleLogin}) {
 
     const history = useHistory()
     
@@ -19,6 +19,7 @@ function Login() {
         .then(r => r.json())
         .then(userInfo => {
             localStorage.token = userInfo.token 
+            handleLogin(userInfo)
             history.push("/home")
         })
     }
