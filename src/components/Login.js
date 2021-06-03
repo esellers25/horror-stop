@@ -1,8 +1,11 @@
 import {useHistory} from "react-router-dom";
+import {useState} from "react";
 
 function Login({handleLogin}) {
 
     const history = useHistory()
+    const [username, setUsername] = useState("")
+    const [password, setPassword] = useState("")
     
     function logIn(e){
         e.preventDefault()
@@ -12,8 +15,8 @@ function Login({handleLogin}) {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                username: e.target[0].value,
-                password: e.target[1].value
+                username: username,
+                password: password
             })
         })
         .then(r => r.json())
@@ -29,9 +32,9 @@ function Login({handleLogin}) {
             <h2>Login</h2>
             <form onSubmit={(e) => logIn(e)}>
                 <label>UserName</label>
-                <input name="username" type="text"/>
+                <input name="username" type="text" value={username} onChange={e => setUsername(e.target.value)}/>
                 <label>Password</label>
-                <input name="password" type="password"/>
+                <input name="password" type="password" value={password} onChange={e => setPassword(e.target.value)}/>
                 <input type="submit"/>
             </form>
         </div>

@@ -22,6 +22,7 @@ function App() {
     .then(r => r.json())
     .then(categoryData => {
       setCategories(categoryData)
+      console.log(categoryData)
       let movieGroupings = categoryData.map(( category) => category.movies)
       let allMovies = movieGroupings.flat()
       setMovies(allMovies)}
@@ -33,11 +34,6 @@ function App() {
     setUser(userInfo)
   }
   console.log(user)
-
-  // function setClickedMovie(id){
-  //   const movieOnPage = movies.find((movie) => movie.id == id)
-  //   setSelectedMovie(movieOnPage)
-  // }
 
 
   return (

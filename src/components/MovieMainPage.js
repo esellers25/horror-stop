@@ -19,7 +19,7 @@ function MovieMainPage({movies, user}){
 
     const reviewList = reviewArr.map((review) => 
         <>
-            <Card>
+            <Card key={review.id}>
             <p>Rating: {review.rating}</p>
             <p>Spook Factor: {review.spook_factor}</p>
             <p>{review.comment}</p>
@@ -45,6 +45,7 @@ function MovieMainPage({movies, user}){
         fetch("http://localhost:3000/reviews", {
             method: "POST",
             headers: {
+                // "Authorization": `Bearer ${localStorage.token}`,
                 "Content-Type" : "application/json"
             },
             body: JSON.stringify({
