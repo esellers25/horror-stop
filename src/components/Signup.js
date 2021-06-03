@@ -25,7 +25,7 @@ function Signup(){
     }
 
     return(
-        <div>
+        <div className="login-form">
             <h2>Signup for an Account</h2>
             <form onSubmit={(e) => signUp(e)}>
                 <label>UserName</label>

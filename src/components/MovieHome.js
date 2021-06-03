@@ -7,7 +7,7 @@ function MovieHome({categories}){
     
     return(
         <div>
-            <h1>HOME PAGE</h1>
+            <h1 className="homePage">Choose your fright...</h1>
             <Card.Group >
                 {categoryList}
             </Card.Group>
