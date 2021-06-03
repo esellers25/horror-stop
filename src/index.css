@@ -136,3 +136,8 @@ h4.movie-card {
   justify-content: space-evenly;
   width: 1000px;
 }
+
+.header {
+  background-image: url("https://ak.picdn.net/shutterstock/videos/1041541525/thumb/1.jpg");
+
+}

@@ -18,7 +18,7 @@ function Header({user}) {
     }
     
     return (
-        <div>
+        <div className="header">
             <h1 onClick={homeClick}>FRIGHT SITE</h1>
             <div>
                 <nav className="navbar">

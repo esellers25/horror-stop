@@ -12,7 +12,6 @@ function MovieMainPage({movies, user}){
     const [comment, setComment] = useState("")
     const {watch_providers, reviews} = mainMovie
     const [reviewArr, setReviewArr] = useState(reviews)
-    
 
     const providersList = watch_providers.replace(/['"]+/g, '')
     const providers = providersList.slice(1, -1)
@@ -23,6 +22,7 @@ function MovieMainPage({movies, user}){
     const reviewList = reviewArr.map((review) => 
         <>
             <Card className="review-cards" key={review.id}>
+            {/* <h5>{user.username}</h5> */}
             <p>Rating: {review.rating}</p>
             <p>Spook Factor: {review.spook_factor}</p>
             <p>{review.comment}</p>
@@ -30,6 +30,11 @@ function MovieMainPage({movies, user}){
             </Card>
         </>
     )
+
+    const allRatings = reviewArr.map((review) => review.rating)
+    const currentAverage = allRatings.length > 0 ? allRatings.reduce((a,b) => a + b, 0)/allRatings.length : 0
+    const average = parseFloat(currentAverage).toFixed(1)
+   
 
     function handleBackClick(){
         history.goBack()
@@ -74,8 +79,6 @@ function MovieMainPage({movies, user}){
     }
 
 
-// const providersAll = list.map((provider) => <p key={provider}>{provider}</p>)
-
     return(
         <div>
             <div>
@@ -90,6 +93,7 @@ function MovieMainPage({movies, user}){
                         <p>{mainMovie.summary}</p>
                     <h4>Where to watch:</h4>
                     {watch_providers.length > 0 ? <p>{list}</p> : "Sorry, not available to stream!"}
+                    <h4>Average User Review: {average}</h4>
                 </section>
             </div>
             <h3>User Reviews</h3>
