@@ -14,7 +14,6 @@ function App() {
   const [categories, setCategories] = useState([])
   const [movies, setMovies] = useState([])
   const [user, setUser] = useState(null)
-  // const [selectedMovie, setSelectedMovie] = useState({})
 
 
   useEffect(() => {
@@ -33,7 +32,7 @@ function App() {
   function onLogin(userInfo){
     setUser(userInfo)
   }
-  console.log(user)
+  
 
 
   return (
