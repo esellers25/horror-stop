@@ -1,6 +1,6 @@
 import {useParams,  useHistory} from "react-router-dom";
 import {useState} from "react";
-import { Card } from 'semantic-ui-react';
+import { Button } from 'semantic-ui-react';
 
 function MovieMainPage({movies, user}){
     const {id} = useParams();
@@ -18,16 +18,17 @@ function MovieMainPage({movies, user}){
     const firstList = providers.split(",")
     const list = firstList.join()
     
+    const releaseYear = mainMovie.year.slice(0, 4)
 
     const reviewList = reviewArr.map((review) => 
         <>
-            <Card className="review-cards" key={review.id}>
+            <div className="review-cards" key={review.id}>
             {/* <h5>{user.username}</h5> */}
             <p>Rating: {review.rating}</p>
-            <p>Spook Factor: {review.spook_factor}</p>
+            <p>Spook Factor: {displaySkulls(review.spook_factor)}</p>
             <p>{review.comment}</p>
-            {user && review.user_id === user.id ? <button onClick={() => handleDelete(review.id)}>x</button> : null}
-            </Card>
+            {user && review.user_id === user.id ? <Button onClick={() => handleDelete(review.id)}>Send this review to Hell</Button> : null}
+            </div>
         </>
     )
 
@@ -35,7 +36,29 @@ function MovieMainPage({movies, user}){
     const currentAverage = allRatings.length > 0 ? allRatings.reduce((a,b) => a + b, 0)/allRatings.length : 0
     const average = parseFloat(currentAverage).toFixed(1)
    
+    const allSpooks = reviewArr.map((review) => review.spook_factor)
+    const firstSpookAvg = allSpooks.length > 0 ? allSpooks.reduce((a,b) => a + b, 0)/allSpooks.length : 0
+    const spookAverage = parseInt(firstSpookAvg).toFixed()
+    console.log(spookAverage)
 
+    function displaySkulls(avg){
+        if (avg === 1) {
+            return "💀"
+        }
+        else if (avg === 2) {
+            return "💀💀"
+        }
+        else if (avg === 3) {
+            return "💀💀💀"
+        }
+        else if (avg === 4) {
+            return "💀💀💀💀"
+        }
+        else if (avg === 5) {
+            return "💀💀💀💀💀"
+        }
+    }
+debugger
     function handleBackClick(){
         history.goBack()
     }
@@ -83,8 +106,7 @@ function MovieMainPage({movies, user}){
         <div>
             <div>
             <button class="ui small button" onClick={handleBackClick}>Back</button><br/>
-            <h2>{mainMovie.title}</h2>
-            <h3>Release date: {mainMovie.year}</h3>
+            <h2>{mainMovie.title} ({releaseYear})</h2>
             <div className="main-content">
                 <img className="main-movie-img"src={mainMovie.poster_url} alt={mainMovie.title}></img><br/>
                 <section className="section">
@@ -94,28 +116,36 @@ function MovieMainPage({movies, user}){
                     <h4>Where to watch:</h4>
                     {watch_providers.length > 0 ? <p>{list}</p> : "Sorry, not available to stream!"}
                     <h4>Average User Review: {average}</h4>
+                    <h4>Average Spook Factor: {spookAverage}</h4><p>{displaySkulls(spookAverage)}</p>
                 </section>
             </div>
+            </div>
             <h3>User Reviews</h3>
+            <div className="review-container">
             {reviewList}
             </div>
-            <div>
+            <div className="add-review-container">
                 <h3>Add Your Review!</h3>
-                <form onSubmit={handleSubmit}>
-                    <label htmlFor={"rating"}>Rating</label>
-                    <input id="rating" value={rating} onChange={(e) => setRating(e.target.value)} type="number" min={1} max={10}></input>
-                    <label htmlFor={"spookFactor"}>Spook Factor</label>
-                    <select id="spookFactor" value={spookFactor} onChange={e => setSpookFactor(e.target.value)}>
+                <div className="display-container">
+                <form className="review-form" onSubmit={handleSubmit}>
+                    <label htmlFor={"rating"} className="review-data-field">Rating</label>
+                    <input id="rating" className="review-data-field" value={rating} onChange={(e) => setRating(e.target.value)} type="number" min={1} max={10}></input>
+                    <label htmlFor={"spookFactor"} className="review-data-field">Spook Factor</label>
+                    <select id="spookFactor" className="review-data-field" value={spookFactor} onChange={e => setSpookFactor(e.target.value)}>
                         <option value="1">💀</option>
                         <option value="2">💀💀</option>
                         <option value="3">💀💀💀</option>
                         <option value="4">💀💀💀💀</option>
                         <option value="5">💀💀💀💀💀</option>
                     </select>
-                    <label htmlFor={"comment"} >Comment</label>
-                    <input id="comment" value={comment} onChange={e => setComment(e.target.value)}></input>
-                    <button>Submit</button>
+                    <label htmlFor={"comment"} className="review-data-field">Comment</label>
+                    <input id="comment" className="review-data-field" value={comment} onChange={e => setComment(e.target.value)}></input>
+                    <button className="review-data-field">Submit</button>
                 </form>
+                </div>
+            </div>
+            <div className="bullshit">
+
             </div>
         </div>
     )
