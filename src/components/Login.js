@@ -21,7 +21,13 @@ function Login({handleLogin}) {
         })
         .then(r => r.json())
         .then(userInfo => {
-            localStorage.token = userInfo.token 
+            // console.log(userInfo)
+            // localStorage.token = userInfo.token
+            localStorage.setItem('username', userInfo.username) 
+            localStorage.setItem('token', userInfo.token)
+            localStorage.setItem('user', userInfo.id)
+            localStorage.setItem('id', userInfo.id)
+            // localStorage.setItem('user', userInfo)
             handleLogin(userInfo)
             history.push("/home")
         })

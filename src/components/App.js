@@ -30,6 +30,16 @@ function App() {
       
   }, [])
 
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem("user")
+    if (loggedInUser) {
+      const currentUser = {username: localStorage.getItem("username"),
+      id: localStorage.getItem("id"),
+      token: localStorage.getItem("token")}
+      setUser(currentUser)
+    }
+  }, [])
+
   function onLogin(userInfo){
     setUser(userInfo)
   }
