@@ -21,7 +21,9 @@ function Signup(){
             })
         })
         .then(r => r.json())
-        .then(history.push("/login"))
+        .then(response => {
+            console.log(response)
+            history.push("/login")})
     }
 
     return(

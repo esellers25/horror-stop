@@ -19,7 +19,7 @@ function MovieMainPage({movies, user}){
     const list = firstList.join()
     
     const releaseYear = mainMovie.year.slice(0, 4)
-
+    console.log(user)
     const reviewList = reviewArr.map((review) => 
         <>
             <div className="review-cards" key={review.id}>
@@ -27,7 +27,7 @@ function MovieMainPage({movies, user}){
             <p>Rating: {review.rating}</p>
             <p>Spook Factor: {displaySkulls(review.spook_factor)}</p>
             <p>{review.comment}</p>
-            {user && review.user_id === user.id ? <Button onClick={() => handleDelete(review.id)}>Send this review to Hell</Button> : null}
+            {user && review.user_id === parseInt(user.id) ? <Button onClick={() => handleDelete(review.id)}>Send this review to Hell</Button> : null}
             </div>
         </>
     )
@@ -39,7 +39,6 @@ function MovieMainPage({movies, user}){
     const allSpooks = reviewArr.map((review) => review.spook_factor)
     const firstSpookAvg = allSpooks.length > 0 ? allSpooks.reduce((a,b) => a + b, 0)/allSpooks.length : 0
     const spookAverage = parseInt(firstSpookAvg).toFixed()
-    console.log(spookAverage)
 
     function displaySkulls(avg){
         if (avg === 1) {
@@ -58,7 +57,7 @@ function MovieMainPage({movies, user}){
             return "💀💀💀💀💀"
         }
     }
-debugger
+
     function handleBackClick(){
         history.goBack()
     }
@@ -71,7 +70,6 @@ debugger
         .then(deletedMessage =>{
             const updatedReviews = reviewArr.filter((review) => review.id !== id)
             setReviewArr(updatedReviews)
-            console.log(reviewArr)
         })
     }
 
@@ -80,7 +78,6 @@ debugger
         fetch("http://localhost:3000/reviews", {
             method: "POST",
             headers: {
-                // "Authorization": `Bearer ${localStorage.token}`,
                 "Content-Type" : "application/json"
             },
             body: JSON.stringify({
@@ -90,9 +87,10 @@ debugger
                 movie_id: parseInt(id), 
                 user_id: user.id 
             })
-        })
+        }) 
         .then(r => r.json())
         .then(newReview => {
+            console.log(newReview)
             const updatedReviews = [...reviewArr, newReview]
             setReviewArr(updatedReviews)
             setComment("")
@@ -100,7 +98,6 @@ debugger
             setSpookFactor(1)
         })
     }
-
 
     return(
         <div>
@@ -128,9 +125,9 @@ debugger
                 <h3>Add Your Review!</h3>
                 <div className="display-container">
                 <form className="review-form" onSubmit={handleSubmit}>
-                    <label htmlFor={"rating"} className="review-data-field">Rating</label>
+                    <label htmlFor="rating" className="review-data-field">Rating</label>
                     <input id="rating" className="review-data-field" value={rating} onChange={(e) => setRating(e.target.value)} type="number" min={1} max={10}></input>
-                    <label htmlFor={"spookFactor"} className="review-data-field">Spook Factor</label>
+                    <label htmlFor="spookFactor" className="review-data-field">Spook Factor</label>
                     <select id="spookFactor" className="review-data-field" value={spookFactor} onChange={e => setSpookFactor(e.target.value)}>
                         <option value="1">💀</option>
                         <option value="2">💀💀</option>
@@ -138,7 +135,7 @@ debugger
                         <option value="4">💀💀💀💀</option>
                         <option value="5">💀💀💀💀💀</option>
                     </select>
-                    <label htmlFor={"comment"} className="review-data-field">Comment</label>
+                    <label htmlFor="comment" className="review-data-field">Comment</label>
                     <input id="comment" className="review-data-field" value={comment} onChange={e => setComment(e.target.value)}></input>
                     <button className="review-data-field">Submit</button>
                 </form>
