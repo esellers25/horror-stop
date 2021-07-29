@@ -14,7 +14,7 @@ function MovieList({categories}){
     />)
 
     return(
-        <div>
+        <div className="movieListCards">
             <h3>{selectedCategory.name} Movies</h3>
             {movieCards}
         </div>

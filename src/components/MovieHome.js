@@ -6,7 +6,7 @@ function MovieHome({categories}){
     let categoryList = categories.map((category) => <CategoryCard key={category.id} category={category}/>)
     
     return(
-        <div>
+        <div className="catCards">
             <h1 className="homePage">Choose your fright...</h1>
             <Card.Group >
                 {categoryList}

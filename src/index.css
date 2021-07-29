@@ -45,6 +45,17 @@ h1.homePage {
   pointer-events: none;
 }
 
+.catCards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding-left: 100px;
+}
+
+.movieListCards {
+  padding-left: 80px;
+}
 
 .card {
   text-align: center;
@@ -68,27 +79,39 @@ h1.homePage {
 }
 
 .section {
-  padding: 2em;
+  padding: 1.5em;
   margin: 5px 5px 5px 5px;
   display: flex;
-  width: 400px;
+  width: 500px;
   flex-direction: column;
   align-content: center;
-  background-color: gray;
+  /* background-color: gray; */
   border-radius: 5%;
 }
 
+.buttonTitle {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  height: 50px;
+  margin-bottom: 16px;
+}
+
+.mainTitle {
+  margin-left: 10px;
+}
+
 .section h4 {
-  margin-bottom: .5rem;
-  margin-top: 1rem;
+  margin-bottom: .4rem;
+  margin-top: 0.4rem;
 } 
 
 .main-movie-img{
   
-  margin-left: 10px;
+  margin-left: 0px;
   margin-right: 10px;
-  width: 50%;
-  height: auto;
+  width: auto;
+  height: 340px;
 }
 
 h4.movie-card {
@@ -98,8 +121,8 @@ h4.movie-card {
 
 .navbar {
   background-color: #270471;
-  margin-top: 40px;
-  margin-bottom: 30px;
+  margin-top: 8px;
+  margin-bottom: 17px;
   line-height: 250%;
   display: flex;
   flex-direction: row;
@@ -141,14 +164,16 @@ h4.movie-card {
 
 .review-cards {
   background-color: whitesmoke;
-  width: 265px;
-  margin-left: 5px;
-  margin-right: 5px;
-  border-style: solid 20px red;
-  border-color: red;
-  border-radius: 5%;
-  padding: 8px 8px 8px 8px;
+  width: 240px;
+  margin-left: 7px;
+  margin-right: 7px;
+  border-radius: 5px;
+  padding: 8px 4px 8px 4px;
   align-content: center;
+}
+
+#reviewButton {
+  margin-left: 18px;
 }
 
 .main-content {
@@ -156,8 +181,16 @@ h4.movie-card {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  width: 1000px;
+  align-items: center;
+  width: 900px;
   margin-bottom: 35px;
+  background-color: rgb(167, 167, 167);
+  border-radius: 3px;
+}
+
+.alignMain {
+  display: flex;
+  justify-content: center;
 }
 
 .header {

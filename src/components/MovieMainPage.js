@@ -23,11 +23,11 @@ function MovieMainPage({movies, user}){
     const reviewList = reviewArr.map((review) => 
         <>
             <div className="review-cards" key={review.id}>
-            {/* <h5>{user.username}</h5> */}
+            <h5>{user.username}</h5>
             <p>Rating: {review.rating}</p>
             <p>Spook Factor: {displaySkulls(review.spook_factor)}</p>
             <p>{review.comment}</p>
-            {user && review.user_id === parseInt(user.id) ? <Button onClick={() => handleDelete(review.id)}>Send this review to Hell</Button> : null}
+            {user && review.user_id === parseInt(user.id) ? <Button id="reviewButton" onClick={() => handleDelete(review.id)}>Send this review to Hell</Button> : null}
             </div>
         </>
     )
@@ -101,21 +101,23 @@ function MovieMainPage({movies, user}){
 
     return(
         <div>
-            <div>
-            <button class="ui small button" onClick={handleBackClick}>Back</button><br/>
-            <h2>{mainMovie.title} ({releaseYear})</h2>
-            <div className="main-content">
-                <img className="main-movie-img"src={mainMovie.poster_url} alt={mainMovie.title}></img><br/>
-                <section className="section">
-                    <h4>Runtime: {mainMovie.runtime}</h4>
-                    <h4>Summary</h4>
-                        <p>{mainMovie.summary}</p>
-                    <h4>Where to watch:</h4>
-                    {watch_providers.length > 0 ? <p>{list}</p> : "Sorry, not available to stream!"}
-                    <h4>Average User Review: {average}</h4>
-                    <h4>Average Spook Factor: {spookAverage}</h4><p>{displaySkulls(spookAverage)}</p>
-                </section>
-            </div>
+            <div >
+                <h3 className="mainTitle">{mainMovie.title} ({releaseYear})</h3>
+                <div className="alignMain">
+                    <div className="main-content">
+                        <img className="main-movie-img"src={mainMovie.poster_url} alt={mainMovie.title}></img><br/>
+                        <section className="section">
+                            <h4>Runtime: {mainMovie.runtime}</h4>
+                            <h4>Summary</h4>
+                                <p>{mainMovie.summary}</p>
+                            <h4>Where to watch:</h4>
+                            {watch_providers.length > 0 ? <p>{list}</p> : "Sorry, not available to stream!"}
+                            <h4>Average User Review: {average}</h4>
+                            <h4>Average Spook Factor: {spookAverage}</h4><p>{displaySkulls(spookAverage)}</p>
+                        </section>
+                    </div>
+                </div>
+                <button class="ui small button" onClick={handleBackClick}>Back</button><br/>
             </div>
             <h3>User Reviews</h3>
             <div className="review-container">

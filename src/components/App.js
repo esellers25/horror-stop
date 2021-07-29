@@ -52,7 +52,7 @@ function App() {
 
     h1 {
       font-family: 'Butcherman', cursive;
-      font-size: 8em;
+      font-size: 6.5em;
       cursor: pointer;
       color: rgb(185 2 2 / 87%);
       text-align: center;
@@ -65,7 +65,7 @@ function App() {
 
     h2 {
       font-family: 'Oswald', sans-serif;
-      font-size: 5em;
+      font-size: 4em;
       color: white; 
     }
 
@@ -78,7 +78,7 @@ function App() {
     h4 {
       color: white; 
       font-family: 'Oswald', sans-serif;
-      font-size: 1.9em;
+      font-size: 1.3em;
     }
 
     h5 {
@@ -88,7 +88,7 @@ function App() {
 
     p {
       color: white;
-      font-size: 1.5em;
+      font-size: 1.2em;
     }
 
     a {
